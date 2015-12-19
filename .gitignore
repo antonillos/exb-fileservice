@@ -1,4 +1,11 @@
 *.iml
-.idea
-target
+.idea/
 *.pdf
+target/
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+*.jar
+*.war
+hs_err_pid*
+
