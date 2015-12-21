@@ -1,27 +1,40 @@
 package de.exb.interviews.sapozhko.session;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.UUID;
 
 public class Session {
 
-    private final String identity;
-    private final String session;
+	@JsonProperty
+	private String identity;
 
-    public Session(String username) {
-        this.identity = username;
-        this.session = UUID.randomUUID().toString().substring(0, 23);
-    }
+	@JsonProperty
+	private String session = UUID.randomUUID().toString().substring(0, 23);
 
-    public Session(String identity, String session) {
-        this.identity = identity;
-        this.session = session;
-    }
+	public Session() {
+		// Jackson deserialization
+	}
 
-    public String getIdentity() {
-        return identity;
-    }
+	public static Session newInstance() {
+		return new Session();
+	}
 
-    public String getSession() {
-        return session;
-    }
+	public Session setIdentity(String identity) {
+		this.identity = identity;
+		return this;
+	}
+
+	public String getIdentity() {
+		return identity;
+	}
+
+	public Session setSession(String session) {
+		this.session = session;
+		return this;
+	}
+
+	public String getSession() {
+		return session;
+	}
 }

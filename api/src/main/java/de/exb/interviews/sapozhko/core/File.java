@@ -4,29 +4,47 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class File {
 
-    @JsonProperty
-    private String path;
+	@JsonProperty
+	private String name;
 
-    @JsonProperty
-    private Long size;
+	@JsonProperty
+	private String path;
 
-    public File(String path) {
-        this.path = path;
-    }
+	@JsonProperty
+	private Long size = 0L;
 
-    public String getPath() {
-        return path;
-    }
+	public File() {
+		// Jackson deserialization
+	}
 
-    public void setPath(String path) {
-        this.path = path;
-    }
+	public static File newInstance() {
+		return new File();
+	}
 
-    public Long getSize() {
-        return size;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setSize(Long size) {
-        this.size = size;
-    }
+	public File setName(String name) {
+		this.name = name;
+		return this;
+	}
+
+	public String getPath() {
+		return path;
+	}
+
+	public File setPath(String path) {
+		this.path = path;
+		return this;
+	}
+
+	public Long getSize() {
+		return size;
+	}
+
+	public File setSize(Long size) {
+		this.size = size;
+		return this;
+	}
 }
