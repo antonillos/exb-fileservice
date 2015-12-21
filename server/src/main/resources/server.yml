@@ -1,7 +1,18 @@
 server:
-  type: simple
-  connector:
-    type: http
+  applicationConnectors:
+  - type: http
     port: 8080
+  adminConnectors:
+  - type: http
+    port: 8761
+
 logging:
-  level: DEBUG
+  level: INFO
+
+authenticator:
+  factory: de.exb.interviews.sapozhko.auth.BasicAuthenticatorFactory
+  properties: server/src/main/resources/auth.properties
+
+sessionConfig:
+  sessionsStoreFactory: de.exb.interviews.sapozhko.session.InMemorySessionsStoreFactory  # InMemorySessionsStoreFactory by default
+  sessionTimeoutSecs: 600   # 15 minutes by default
